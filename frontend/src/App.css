@@ -1,0 +1,83 @@
+.landingPageContainer {
+  width: 100vw;
+  height: 100vh;
+  background: url("../public/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.landingPageContainer nav {
+  color: white;
+  padding-inline: 1.3rem;
+  padding-block: 1.6rem;
+}
+
+.landingPageContainer nav h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.landingPageContainer nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.landingPageContainer nav .navLists {
+  display: flex;
+  gap: 1.6rem;
+  cursor: pointer;
+}
+
+.landingMainContainer div {
+  color: white;
+}
+
+.landingMainContainer {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 3.1rem;
+  height: 80vh;
+  align-items: center;
+}
+.landingMainContainer div img {
+  height: 75vh;
+  width: auto;
+}
+
+.landingMainContainer div h1 {
+  font-size: 2.8rem;
+}
+
+.landingMainContainer div p {
+  padding-block: 0.8rem;
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+button {
+  background-color: #d97500;
+  cursor: pointer;
+}
+
+.getStartedButton {
+  width: fit-content;
+  background-color: #d97500;
+  padding-inline: 0.7rem;
+  padding-block: 0.25rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.getStartedButton a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.navLoginButton {
+  color: white;
+  padding-inline: 0.85rem;
+  font-weight: 600;
+  padding-block: 0.25rem;
+  border-radius: 8px;
+}
