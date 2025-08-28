@@ -41,7 +41,7 @@ export default function Authentication() {
         try {
           let result = handleLogin(username, password);
           navigate("/home");
-          console.log(result);
+          // console.log(result);
         } catch (error) {
           console.log(error);
         }
@@ -49,7 +49,7 @@ export default function Authentication() {
       if (formState === 1) {
         // state 1 is for register
         let result = await handleRegister(name, username, password);
-        console.log(result);
+        // console.log(result);
 
         setMessage(result);
         setOpen(true);
@@ -77,7 +77,7 @@ export default function Authentication() {
           md={7}
           sx={{
             backgroundImage:
-              'url("/static/images/templates/templates-images/sign-in-side-bg.png")',
+              'url("https://images.unsplash.com/photo-1503264116251-35a269479413")',
             backgroundColor: (t) =>
               t.palette.mode === "light"
                 ? t.palette.grey[50]

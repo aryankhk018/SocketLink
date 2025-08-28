@@ -71,11 +71,11 @@ const VideoMeet = () => {
   const getPermissions = async () => {
     try {
       const videoPermission = await navigator.mediaDevices.getUserMedia({
-        // audio: {
-        //   echoCancellation: true,
-        //   noiseSuppression: true,
-        //   autoGainControl: true,
-        // },
+        audio: {
+          echoCancellation: true,
+          noiseSuppression: true,
+          autoGainControl: true,
+        },
         video: true,
       });
       if (videoPermission) {
@@ -618,6 +618,7 @@ const VideoMeet = () => {
             className={styles.meetVideoUser}
             ref={localVideoref}
             autoPlay
+            muted
           ></video>
 
           <div className={styles.conferenceView}>
