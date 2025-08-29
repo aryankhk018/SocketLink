@@ -12,7 +12,7 @@ const io = connetToSocket(server);
 app.set("port", process.env.PORT || 8000);
 app.use(
   cors({
-    origin: "https://socketlink.onrender.com",
+    origin: ["http://localhost:5173", "https://socketlink.onrender.com"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })

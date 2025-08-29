@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -10,12 +10,9 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { use } from "react";
 import { AuthContext } from "../contexts/AuthContext.jsx";
 import { Snackbar } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-
-// TODO remove, this demo shouldn't need to reset the theme.
 
 const defaultTheme = createTheme();
 
@@ -39,10 +36,12 @@ export default function Authentication() {
       if (formState === 0) {
         // state 0 is for login
         try {
-          let result = handleLogin(username, password);
+          let result = await handleLogin(username, password);
           navigate("/home");
           // console.log(result);
         } catch (error) {
+          let msg = error.response?.data?.message || "Invalid credantials";
+          setError(msg);
           console.log(error);
         }
       }
@@ -101,7 +100,7 @@ export default function Authentication() {
             </Avatar>
             <div>
               <Button
-                variant={formState === 0 ? "contained" : ""}
+                variant={formState === 0 ? "contained" : "text"}
                 onClick={() => {
                   setFormState(0);
                 }}
@@ -174,7 +173,12 @@ export default function Authentication() {
           </Box>
         </Grid>
       </Grid>
-      <Snackbar open={open} autoHideDuration={4000} message={message} />
+      <Snackbar
+        open={open}
+        autoHideDuration={4000}
+        message={message}
+        onClose={() => setOpen(false)}
+      />
     </ThemeProvider>
   );
 }

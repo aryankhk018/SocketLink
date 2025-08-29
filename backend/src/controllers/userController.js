@@ -7,19 +7,23 @@ const login = async (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
-    res.status(400).json({ message: "Please provide all the required fields" });
+    return res
+      .status(400)
+      .json({ message: "Please provide all the required fields" });
   }
   try {
     const user = await User.findOne({ username });
     if (!user) {
-      res.status(httpStatus.NOT_FOUND).json({ message: "User not found" });
+      return res
+        .status(httpStatus.NOT_FOUND)
+        .json({ message: "User not found" });
     }
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
     if (isPasswordCorrect) {
       let token = crypto.randomBytes(20).toString("hex");
       user.token = token;
       await user.save();
-      res
+      return res
         .status(httpStatus.OK)
         .json({ message: "User logged in successfully", token: token });
     } else {
@@ -28,7 +32,9 @@ const login = async (req, res) => {
         .json({ message: "Password wrong try again" });
     }
   } catch (e) {
-    res.status(500).json({ message: `Something went wrong on server ${e}` });
+    return res
+      .status(500)
+      .json({ message: `Something went wrong on server ${e}` });
   }
 };
 
